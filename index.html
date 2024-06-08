@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript">
+        window.onload = function(){
+            
+            var queryString = window.location.search;
+            var urlParams = new URLSearchParams(queryString);
+            var text = '';
+            urlParams.forEach((value, key) => {
+                if(key === 'name'){
+                    var name = value.split('_');
+                    name.forEach(n => {
+                        text += n.charAt(0).toUpperCase() + n.substr(1) + ' ';
+                    })
+                }
+            });
+            document.getElementById('params').textContent = text ? `Miss ${text.trim()},` : 'Dear Person,';
+        }
+    </script>
+</head>
+<body>
+    <div class="container night stars">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong id="params"></strong>
+                        <h1>I'm Sorry 😔</h1>
+                        <p>I didn't mean to upset you. Can we be friends again?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+    </script>
+</body>
+</html>
